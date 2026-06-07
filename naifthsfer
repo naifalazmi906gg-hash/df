@@ -1,5 +1,5 @@
 --[[
-    NAIF PROJECT + TELEPORT + FRIEND CHECK + SAFEZONE + WAYPOINT
+    NAIF PROJECT + TELEPORT + FRIEND CHECK + SAFEZONE + WAYPOINT + TOGGLE KEY
 ]]
 
 local LibraryUrl = "https://raw.githubusercontent.com/Vovabro46/trash/refs/heads/main/Test.lua"
@@ -317,6 +317,16 @@ RunService.Heartbeat:Connect(function()
         Camera.CFrame = Camera.CFrame:Lerp(look, 1 / Aimbot.Smoothness)
     else
         Stroke.Color = Aimbot.FOV_Color
+    end
+end)
+
+-- اختصار زر الشفت اليمين لإخفاء وإظهار القائمة
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.RightShift then
+        local mainGui = CoreGui:FindFirstChild("NAIF")
+        if mainGui then
+            mainGui.Enabled = not mainGui.Enabled
+        end
     end
 end)
 
